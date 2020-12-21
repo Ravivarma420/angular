@@ -1,10 +1,10 @@
-pipeline{
-  agent{
+pipeline {
+  agent {
     label 'buildserver'
   }
-  stages{
+  stages {
     
-    stage('Checkout')
+    stage ('Checkout')
     {
       steps
       {  
@@ -13,21 +13,21 @@ pipeline{
       }
     }
     
-    stage('build')
+    stage ('build')
     {
       steps 
       {
         sh "cd /home/ubuntu/workspace/angular/Angular-JumpSart ; sudo npm install "
       }
     }
-    stage('build2')
+    stage ('build2')
     {
       steps
       {
       sh "cd /home/ubuntu/workspace/angular/Angular-JumpStart ; ng build "
       }
     }
-    stage('Deploying into nginx server')
+    stage ('Deploying into nginx server')
     {
       steps
       {
