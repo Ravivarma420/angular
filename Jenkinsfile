@@ -1,6 +1,6 @@
 pipeline{
   agent{
-    label''
+    label 'buildserver'
   }
   stages{
     
@@ -8,7 +8,7 @@ pipeline{
     {
       steps
       {  
-      sh "checkout scm"
+        checkout scm
    
       }
     }
@@ -17,27 +17,23 @@ pipeline{
     {
       steps 
       {
-        sh "cd /home/ubuntu/workspace//Angular-jembo ; npm install "
+        sh "cd /home/ubuntu/workspace/angular/Angular-JumpSart ; sudo npm install "
       }
     }
     stage('build2')
     {
       steps
       {
-      sh "cd /home/ubuntu/workspace//            ; ng build "
+      sh "cd /home/ubuntu/workspace/angular/Angular-JumpStart ; ng build "
       }
     }
-    
-    
-    stage('Deploying into nginx')
+    stage('Deploying into nginx server')
     {
       steps
       {
-        node('ansible')
-        {
           sh "sudo ansible-playbook /root/nginx.yml"
-        }
-      } 
+       }
+       
     }
   }
 }
