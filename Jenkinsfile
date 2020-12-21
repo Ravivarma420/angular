@@ -24,7 +24,7 @@ pipeline {
     {
       steps
       {
-      sh "cd /home/ubuntu/workspace/angular/Angular-JumpStart ; ng build "
+      sh "cd /home/ubuntu/workspace/angular ; ng build "
       }
     }
     stage ('Deploying into nginx server')
