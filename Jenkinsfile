@@ -17,7 +17,7 @@ pipeline {
     {
       steps 
       {
-        sh "cd /home/ubuntu/workspace/angular/Angular-JumpSart ; sudo npm install "
+        sh "cd /home/ubuntu/workspace/angular ; sudo npm install "
       }
     }
     stage ('build2')
