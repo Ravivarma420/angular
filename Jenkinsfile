@@ -17,21 +17,12 @@ pipeline {
     {
       steps 
       {
-        sh "cd /home/ubuntu/workspace/angular ; sudo npm install "
-      }
-    }
-    stage ('build2')
-    {
-      steps
-      {
-      sh "cd /home/ubuntu/workspace/angular ; ng build "
-      }
-    }
-    stage ('Deploying into nginx server')
-    {
-      steps
-      {
-          sh "sudo ansible-playbook /root/nginx.yml"
+        sh "cd /home/ubuntu/workspace/angular ; sudo apt-get update "
+        sh "cd /home/ubuntu/workspace/angular ; sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - "
+        sh "cd /home/ubuntu/workspace/angular ; sudo apt-get install nodejs "
+        sh "cd /home/ubuntu/workspace/angular ; sudo npm install -g @angular/cli@11.0.0 -y"
+        sh "cd /home/ubuntu/workspace/angular ; sudo ng build "
+        sh "sudo ansible-playbook /root/nginx.yml"
        }
        
     }
